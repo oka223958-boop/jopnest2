@@ -2089,3 +2089,95 @@ weighted avg       0.99      0.98      0.98     39000
 2026-05-26 21:07:17 | INFO     | app | JobNest API is ready!
 2026-05-26 21:09:46 | INFO     | utils.persistence | users_cache.pkl saved (15,002 users)
 2026-05-26 21:09:46 | INFO     | api.routes | New user added: user_id=1006001 | 'Magdy Mansour'
+2026-06-09 11:21:46 | INFO     | app | Loading recommendation engine...
+2026-06-09 11:21:46 | INFO     | models.content_model | ContentBasedRecommender initialized
+2026-06-09 11:21:46 | INFO     | models.ml_model | JobMatchClassifier initialized (RF + GB)
+2026-06-09 11:21:46 | INFO     | models.hybrid_engine | HybridRecommendationEngine initialized
+2026-06-09 11:27:42 | INFO     | __main__ | ============================================================
+2026-06-09 11:27:42 | INFO     | __main__ |   JobNest Training Pipeline  —  Starting
+2026-06-09 11:27:42 | INFO     | __main__ | ============================================================
+2026-06-09 11:27:42 | INFO     | __main__ | 
+[1/4] Loading dataset...
+2026-06-09 11:27:42 | INFO     | utils.data_loader | Loading dataset from C:\Users\DELL\Desktop\jobnest - Copy\data\jobnest_enhanced_dataset.csv ...
+2026-06-09 11:27:44 | INFO     | utils.data_loader | Dataset loaded: 195,000 rows × 40 columns
+2026-06-09 11:27:44 | INFO     | utils.data_loader | Loading jobs from cache...
+2026-06-09 11:27:44 | INFO     | utils.data_loader | Loading users from cache...
+2026-06-09 11:27:44 | INFO     | __main__ |   Dataset : 195,000 rows
+  Jobs    : 1,992 unique
+  Users   : 15,002 unique
+2026-06-09 11:27:44 | INFO     | __main__ | 
+[2/4] Training TF-IDF Content Model...
+2026-06-09 11:27:44 | INFO     | models.content_model | ContentBasedRecommender initialized
+2026-06-09 11:27:44 | INFO     | models.content_model | Fitting TF-IDF on 1,992 jobs...
+2026-06-09 11:27:44 | INFO     | models.content_model | TF-IDF matrix: (1992, 2023) | vocabulary size: 2,023
+2026-06-09 11:27:44 | INFO     | __main__ | 
+[3/4] Training ML Classifier (RF + GB)...
+2026-06-09 11:27:44 | INFO     | models.ml_model | JobMatchClassifier initialized (RF + GB)
+2026-06-09 11:27:44 | INFO     | models.ml_model | Preparing features for ML training...
+2026-06-09 11:27:44 | INFO     | models.ml_model | Feature matrix: (195000, 7) | Class balance: {0: 144080, 1: 50920}
+2026-06-09 11:27:44 | INFO     | models.ml_model | Training Random Forest...
+2026-06-09 11:27:54 | INFO     | models.ml_model |   Accuracy : 0.9848
+2026-06-09 11:27:54 | INFO     | models.ml_model |   AUC-ROC  : 0.9897
+2026-06-09 11:27:54 | INFO     | models.ml_model | 
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99     28816
+           1       1.00      0.94      0.97     10184
+
+    accuracy                           0.98     39000
+   macro avg       0.99      0.97      0.98     39000
+weighted avg       0.99      0.98      0.98     39000
+
+2026-06-09 11:27:54 | INFO     | models.ml_model | Training Gradient Boosting...
+2026-06-09 11:28:16 | INFO     | models.ml_model |   Accuracy : 0.9849
+2026-06-09 11:28:16 | INFO     | models.ml_model |   AUC-ROC  : 0.9898
+2026-06-09 11:28:16 | INFO     | models.ml_model | 
+              precision    recall  f1-score   support
+
+           0       0.98      1.00      0.99     28816
+           1       1.00      0.94      0.97     10184
+
+    accuracy                           0.98     39000
+   macro avg       0.99      0.97      0.98     39000
+weighted avg       0.99      0.98      0.98     39000
+
+2026-06-09 11:29:43 | INFO     | models.ml_model | 5-fold CV AUC: 0.9902 ± 0.0004
+2026-06-09 11:29:43 | INFO     | __main__ |   random_forest          | Accuracy: 0.9848 | AUC-ROC: 0.9897
+2026-06-09 11:29:43 | INFO     | __main__ |   gradient_boosting      | Accuracy: 0.9849 | AUC-ROC: 0.9898
+2026-06-09 11:29:43 | INFO     | __main__ | 
+  Best model  : Gradient Boosting
+  CV AUC      : 0.9902 ± 0.0004
+2026-06-09 11:29:43 | INFO     | __main__ | 
+  Feature Importances:
+2026-06-09 11:29:43 | INFO     | __main__ |   experience_fit                                        0.0087
+2026-06-09 11:29:43 | INFO     | __main__ |   location_match                                        0.0028
+2026-06-09 11:29:43 | INFO     | __main__ |   experience_years                                      0.0005
+2026-06-09 11:29:43 | INFO     | __main__ | 
+[4/4] Saving models to disk...
+2026-06-09 11:29:43 | INFO     | models.content_model | ContentBasedRecommender initialized
+2026-06-09 11:29:43 | INFO     | models.ml_model | JobMatchClassifier initialized (RF + GB)
+2026-06-09 11:29:43 | INFO     | models.hybrid_engine | HybridRecommendationEngine initialized
+2026-06-09 11:29:43 | INFO     | __main__ | 
+============================================================
+2026-06-09 11:29:44 | INFO     | __main__ |   Training complete in 121.5s
+2026-06-09 11:29:44 | INFO     | __main__ |   Models saved to: models/saved/
+2026-06-09 11:29:44 | INFO     | __main__ |   Run:  python app.py  to start the API
+2026-06-09 11:29:44 | INFO     | __main__ | ============================================================
+2026-06-09 11:30:08 | INFO     | app | Loading recommendation engine...
+2026-06-09 11:30:08 | INFO     | models.content_model | ContentBasedRecommender initialized
+2026-06-09 11:30:08 | INFO     | models.ml_model | JobMatchClassifier initialized (RF + GB)
+2026-06-09 11:30:08 | INFO     | models.hybrid_engine | HybridRecommendationEngine initialized
+2026-06-09 11:30:08 | INFO     | app | Models loaded from disk
+2026-06-09 11:30:08 | INFO     | app | Loading data tables...
+2026-06-09 11:30:08 | INFO     | utils.data_loader | Loading dataset from C:\Users\DELL\Desktop\jobnest - Copy\data\jobnest_enhanced_dataset.csv ...
+2026-06-09 11:30:10 | INFO     | utils.data_loader | Dataset loaded: 195,000 rows × 40 columns
+2026-06-09 11:30:10 | INFO     | utils.persistence | Loaded users from cache: 15,002 users
+2026-06-09 11:30:10 | INFO     | app | Users loaded from cache: 15,002 rows (includes added users)
+2026-06-09 11:30:10 | INFO     | utils.persistence | Loaded jobs from cache: 1,992 jobs
+2026-06-09 11:30:10 | INFO     | app | Jobs loaded from cache: 1,992 rows (includes added jobs)
+2026-06-09 11:30:10 | INFO     | utils.persistence | Loaded courses from cache: 2,001 courses
+2026-06-09 11:30:10 | INFO     | app | Courses loaded from cache: 2,001 rows (includes added courses)
+2026-06-09 11:30:10 | INFO     | chatbot.engine | ChatbotEngine v3.0 initialized
+2026-06-09 11:30:10 | INFO     | api.routes | Routes initialized
+2026-06-09 11:30:10 | INFO     | app | JobNest API is ready!
+2026-06-09 11:32:29 | INFO     | app | Server shutting down...
