@@ -2070,3 +2070,22 @@ weighted avg       0.99      0.98      0.98     39000
 2026-04-30 15:44:35 | INFO     | api.routes | New user added: user_id=1006000 | 'Hassan Muhamed'
 2026-04-30 15:46:15 | INFO     | utils.persistence | courses_cache.pkl saved (2,001 courses)
 2026-04-30 15:46:15 | INFO     | api.routes | New course added: course_id=2001 | 'Wordpress for Everybody'
+2026-05-26 21:07:14 | INFO     | app | Loading recommendation engine...
+2026-05-26 21:07:14 | INFO     | models.content_model | ContentBasedRecommender initialized
+2026-05-26 21:07:14 | INFO     | models.ml_model | JobMatchClassifier initialized (RF + GB)
+2026-05-26 21:07:14 | INFO     | models.hybrid_engine | HybridRecommendationEngine initialized
+2026-05-26 21:07:15 | INFO     | app | Models loaded from disk
+2026-05-26 21:07:15 | INFO     | app | Loading data tables...
+2026-05-26 21:07:15 | INFO     | utils.data_loader | Loading dataset from D:\New folder (2)\jobnest - Copy\data\jobnest_enhanced_dataset.csv ...
+2026-05-26 21:07:17 | INFO     | utils.data_loader | Dataset loaded: 195,000 rows × 40 columns
+2026-05-26 21:07:17 | INFO     | utils.persistence | Loaded users from cache: 15,001 users
+2026-05-26 21:07:17 | INFO     | app | Users loaded from cache: 15,001 rows (includes added users)
+2026-05-26 21:07:17 | INFO     | utils.persistence | Loaded jobs from cache: 1,992 jobs
+2026-05-26 21:07:17 | INFO     | app | Jobs loaded from cache: 1,992 rows (includes added jobs)
+2026-05-26 21:07:17 | INFO     | utils.persistence | Loaded courses from cache: 2,001 courses
+2026-05-26 21:07:17 | INFO     | app | Courses loaded from cache: 2,001 rows (includes added courses)
+2026-05-26 21:07:17 | INFO     | chatbot.engine | ChatbotEngine v3.0 initialized
+2026-05-26 21:07:17 | INFO     | api.routes | Routes initialized
+2026-05-26 21:07:17 | INFO     | app | JobNest API is ready!
+2026-05-26 21:09:46 | INFO     | utils.persistence | users_cache.pkl saved (15,002 users)
+2026-05-26 21:09:46 | INFO     | api.routes | New user added: user_id=1006001 | 'Magdy Mansour'
